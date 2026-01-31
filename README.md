@@ -140,7 +140,7 @@ If you plan to open this project to outside contributors, add these repo files:
 - `CODE_OF_CONDUCT.md` - expected community behavior
 - `ISSUE_TEMPLATE.md` / `PULL_REQUEST_TEMPLATE.md` - templates for quick triage
 
-Simple contributor workflow (recommended):
+**Simple contributor workflow (recommended):**
 
 1. Fork the repo and create a topic branch
 2. Run the project locally and reproduce the issue or feature
