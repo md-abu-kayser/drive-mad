@@ -1,4 +1,4 @@
-# DriveMad — High‑Octane Arcade Racing
+# DriveMad - High‑Octane Arcade Racing
 
 ![status: draft](https://img.shields.io/badge/status-draft-orange) ![license: MIT](https://img.shields.io/badge/license-MIT-blue)
 
@@ -26,14 +26,14 @@ This README is designed to be visitor‑facing and client‑ready: it documents 
 
 ## Overview
 
-DriveMad focuses on immediate, arcade‑style gameplay: tight steering, fast sessions, and replayable challenges. The repo currently contains a static build (single page entry) and core assets in `css/` and `js/`. There is no bundler or package manifest detected in the repository root — development instructions below include both manual and optional Node-based workflows.
+DriveMad focuses on immediate, arcade‑style gameplay: tight steering, fast sessions, and replayable challenges. The repo currently contains a static build (single page entry) and core assets in `css/` and `js/`. There is no bundler or package manifest detected in the repository root - development instructions below include both manual and optional Node-based workflows.
 
 ## Demo & Media
 
 - Host the repository (or the `dist/` folder if you create one) on any static host (GitHub Pages, Netlify, Vercel). For the cleanest demo experience, upload an animated gameplay GIF (5–10s) and screenshots into an `assets/` or `docs/` folder and link them here.
 - Recommended banner & preview assets:
-  - `assets/readme-banner.png` (1280×360) — optional hero image
-  - `assets/demo.gif` (5–10s) — short gameplay loop
+  - `assets/readme-banner.png` (1280×360) - optional hero image
+  - `assets/demo.gif` (5–10s) - short gameplay loop
 
 ## Key Features
 
@@ -60,7 +60,7 @@ Gamepad: standard controllers map axes to steering and triggers to throttle/brak
 
 To avoid CORS and media autoplay restrictions use a local HTTP server rather than opening `index.html` directly.
 
-PowerShell — Python's simple HTTP server (Windows):
+PowerShell - Python's simple HTTP server (Windows):
 
 ```powershell
 # From repository root, serve port 8000 and open browser
@@ -136,9 +136,9 @@ js/
 
 If you plan to open this project to outside contributors, add these repo files:
 
-- `CONTRIBUTING.md` — contribution workflow and PR template
-- `CODE_OF_CONDUCT.md` — expected community behavior
-- `ISSUE_TEMPLATE.md` / `PULL_REQUEST_TEMPLATE.md` — templates for quick triage
+- `CONTRIBUTING.md` - contribution workflow and PR template
+- `CODE_OF_CONDUCT.md` - expected community behavior
+- `ISSUE_TEMPLATE.md` / `PULL_REQUEST_TEMPLATE.md` - templates for quick triage
 
 Simple contributor workflow (recommended):
 
@@ -185,4 +185,8 @@ For client work, custom feature development, or commercial licensing inquiries, 
 - Create `CONTRIBUTING.md` and `CODE_OF_CONDUCT.md` templates
 - Add badges (build, license, demo) at the top of the README
 
-If you want, I can implement any of the above changes now — tell me which items to prioritize.
+---
+
+If you want, I can implement any of the above changes now - tell me which items to prioritize.
+
+---
