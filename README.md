@@ -152,15 +152,15 @@ Recommended linters / tools:
 - Prettier for consistent formatting
 - Git hooks (Husky) to run linters before commits
 
-## Roadmap & Changelog
+### Roadmap & Changelog
 
-Short‑term enhancements:
+**Short‑term enhancements:**
 
 - Add a polished demo GIF and README banner
 - Introduce a bundler (`vite`) and `dist/` build output
 - Create an options/settings screen (control remapping, audio levels)
 
-Medium‑term enhancements:
+**Medium‑term enhancements:**
 
 - Persistent progression (localStorage or server profiles)
 - Level editor and community track sharing
@@ -174,19 +174,16 @@ This project is distributed under the MIT License. See `LICENSE` in the reposito
 
 ### Contact & Commercial Licensing
 
-For client work, custom feature development, or commercial licensing inquiries, include your contact block here (email / company / website). If you'd like, I can add a professional `Contact` or `SPONSOR.md` template.
-
---
-
-### Next Steps I can help with
-
-- Add demo assets (`assets/readme-banner.png`, `assets/demo.gif`) and update the README preview
-- Initialize a minimal `package.json` and add `vite` build scripts, then build a `dist/` and update deployment instructions
-- Create `CONTRIBUTING.md` and `CODE_OF_CONDUCT.md` templates
-- Add badges (build, license, demo) at the top of the README
+For client work, custom feature development, or commercial licensing inquiries, please contact the maintainer via email or GitHub.  
+Commercial licensing options and custom feature development are available upon request.
 
 ---
 
-If you want, I can implement any of the above changes now - tell me which items to prioritize.
+### Next Steps / Planned Improvements
+
+- Add gameplay demo assets (`assets/readme-banner.png`, `assets/demo.gif`) for improved preview
+- Introduce a minimal build setup using Vite and generate a production `dist/` folder
+- Add `CONTRIBUTING.md` and `CODE_OF_CONDUCT.md` for open collaboration
+- Add additional badges (build status, demo link) to the README header
 
 ---
