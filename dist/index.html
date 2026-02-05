@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
@@ -6,7 +6,7 @@
   </head>
 
   <body>
-    <!DOCTYPE html>
+    <!doctype html>
     <html lang="en-us">
       <head>
         <script src="https://deckard.openprocessing.org/user485717/visual2458132/hf42bec4b58ab09712c0f3bedb92cada1/index.wasm.js"></script>
@@ -22,9 +22,10 @@
             font-weight: 800;
             font-display: swap;
             src: url(baloo2.woff) format("woff");
-            unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6,
-              U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191,
-              U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+            unicode-range:
+              U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA,
+              U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193,
+              U+2212, U+2215, U+FEFF, U+FFFD;
           }
 
           .fullscreen {
@@ -506,7 +507,7 @@
             let progressElement = document.getElementById("progress");
             if (progressElement) {
               progressElement.value = Math.round(
-                loadProgressFrac * fakeProgressPercentStart
+                loadProgressFrac * fakeProgressPercentStart,
               );
               progressElement.max = 100;
             }
@@ -563,7 +564,7 @@
 
           function getCSSRgb(color) {
             return `rgb(${Math.round(color[0])}, ${Math.round(
-              color[1]
+              color[1],
             )}, ${Math.round(color[2])})`;
           }
           let lastGradientStyleStr = "";
@@ -573,7 +574,7 @@
             let fromColor = [frac * 0x70, frac * 0xe1, frac * 0xfd];
             let toColor = [frac * 0x00, frac * 0xa2, frac * 0xff];
             let str = `linear-gradient(135deg, ${getCSSRgb(
-              fromColor
+              fromColor,
             )}, ${getCSSRgb(toColor)})`;
             return str;
           }
@@ -621,7 +622,7 @@
                   "set_is_mobile",
                   "v",
                   ["number"],
-                  [matchMedia("(pointer:coarse)").matches]
+                  [matchMedia("(pointer:coarse)").matches],
                 );
               } catch (err4) {}
               gameStarted = true;
@@ -641,7 +642,7 @@
                   additionalInfo += "Could not find Module.asm";
                 }
                 console.log(
-                  `Error when starting game. Try to reload the page. Error message: ${err}. ${additionalInfo}`
+                  `Error when starting game. Try to reload the page. Error message: ${err}. ${additionalInfo}`,
                 );
                 showedStartGameError = true;
               }
@@ -678,7 +679,7 @@
               }
               tryStartGameTimeout = setTimeout(
                 tryStartGame,
-                startGameAttempts * 100
+                startGameAttempts * 100,
               );
               console.log("Not ready to start game yet...");
               return;
@@ -760,7 +761,7 @@
                 "update_screen_size",
                 "v",
                 ["number", "number", "number"],
-                [canvas.width, canvas.height, window.devicePixelRatio]
+                [canvas.width, canvas.height, window.devicePixelRatio],
               );
               updatedScreenSize = true;
             }
@@ -798,7 +799,7 @@
                         "update_screen_size",
                         "v",
                         ["number", "number", "number"],
-                        [canvas.width, canvas.height, 1]
+                        [canvas.width, canvas.height, 1],
                       );
                     }
                   }, 500);
@@ -806,7 +807,7 @@
                 window.addEventListener(
                   "resize",
                   (event) => resizeCanvas(true),
-                  false
+                  false,
                 );
                 if (theDomLoaded) {
                   resizeCanvas(true);
@@ -836,11 +837,11 @@
                 "webglcontextlost",
                 function (e) {
                   alert(
-                    "WebGL context lost. You will need to reload the page."
+                    "WebGL context lost. You will need to reload the page.",
                   );
                   e.preventDefault();
                 },
-                false
+                false,
               );
               requestedCanvas = true;
               return canvas;
@@ -898,7 +899,7 @@
             for (var i = 0; i < storedScripts.length; i++) {
               webViewIframe.contentWindow.postMessage(
                 "eval:" + storedScripts[i],
-                "*"
+                "*",
               );
             }
             storedScripts = [];
@@ -925,7 +926,7 @@
                 webviewDomLoaded = false;
                 webViewIframe.contentWindow.removeEventListener(
                   "DOMContentLoaded",
-                  onWebviewDomContentLoaded
+                  onWebviewDomContentLoaded,
                 );
                 content.removeChild(webViewIframe);
               }
@@ -958,7 +959,7 @@
               webviewDomLoaded = false;
               webViewIframe.contentWindow.addEventListener(
                 "DOMContentLoaded",
-                onWebviewDomContentLoaded
+                onWebviewDomContentLoaded,
               );
               webViewIframe.contentWindow.document.write(html);
               webViewIframe.contentWindow.document.close();
@@ -974,7 +975,7 @@
               } else {
                 webViewIframe.contentWindow.postMessage(
                   "eval:" + jsString,
-                  "*"
+                  "*",
                 );
               }
             } catch (err) {
@@ -1041,7 +1042,7 @@
             setTimeout(
               () =>
                 Module.ccall("ad_interstitial_on_loaded", "v", ["number"], [1]),
-              100
+              100,
             );
           }
 
@@ -1052,7 +1053,7 @@
           function adRewardedLoad() {
             setTimeout(
               () => Module.ccall("ad_rewarded_on_loaded", "v", ["number"], [1]),
-              100
+              100,
             );
           }
 
@@ -1084,8 +1085,8 @@
                     .toString()
                     .substring(
                       0,
-                      window.location.pathname.toString().lastIndexOf("/")
-                    ) + "/"
+                      window.location.pathname.toString().lastIndexOf("/"),
+                    ) + "/",
                 );
               } else if (
                 typeof process === "undefined" &&
@@ -1096,8 +1097,8 @@
                     .toString()
                     .substring(
                       0,
-                      location.pathname.toString().lastIndexOf("/")
-                    ) + "/"
+                      location.pathname.toString().lastIndexOf("/"),
+                    ) + "/",
                 );
               }
               var PACKAGE_NAME = "index.data";
@@ -1108,7 +1109,7 @@
               ) {
                 Module["locateFile"] = Module["locateFilePackage"];
                 err(
-                  "warning: you defined Module.locateFilePackage, that has been renamed to Module.locateFile (using your locateFilePackage for now)"
+                  "warning: you defined Module.locateFilePackage, that has been renamed to Module.locateFile (using your locateFilePackage for now)",
                 );
               }
               var REMOTE_PACKAGE_NAME = Module["locateFile"]
@@ -1120,7 +1121,7 @@
                 packageName,
                 packageSize,
                 callback,
-                errback
+                errback,
               ) {
                 if (
                   typeof process === "object" &&
@@ -1165,11 +1166,11 @@
                       num++;
                     }
                     total = Math.ceil(
-                      (total * Module.expectedDataFileDownloads) / num
+                      (total * Module.expectedDataFileDownloads) / num,
                     );
                     if (Module["setStatus"])
                       Module["setStatus"](
-                        "Downloading data... (" + loaded + "/" + total + ")"
+                        "Downloading data... (" + loaded + "/" + total + ")",
                       );
                   } else if (!Module.dataFileDownloads) {
                     if (Module["setStatus"])
@@ -1202,7 +1203,7 @@
               var fetched = Module["getPreloadedPackage"]
                 ? Module["getPreloadedPackage"](
                     REMOTE_PACKAGE_NAME,
-                    REMOTE_PACKAGE_SIZE
+                    REMOTE_PACKAGE_SIZE,
                   )
                 : null;
               if (!fetched)
@@ -1217,7 +1218,7 @@
                       fetched = data;
                     }
                   },
-                  handleError
+                  handleError,
                 );
 
               function runWithFS() {
@@ -1246,7 +1247,7 @@
                   onload: function () {
                     var byteArray = this.byteArray.subarray(
                       this.start,
-                      this.end
+                      this.end,
                     );
                     this.finish(byteArray);
                   },
@@ -1258,7 +1259,7 @@
                       byteArray,
                       true,
                       true,
-                      true
+                      true,
                     );
                     Module["removeRunDependency"]("fp " + that.name);
                     this.requests[this.name] = null;
@@ -1269,7 +1270,7 @@
                   new DataRequest(
                     files[i]["start"],
                     files[i]["end"],
-                    files[i]["audio"] || 0
+                    files[i]["audio"] || 0,
                   ).open("GET", files[i]["filename"]);
                 }
 
@@ -1277,7 +1278,7 @@
                   assert(arrayBuffer, "Loading data file failed.");
                   assert(
                     arrayBuffer instanceof ArrayBuffer,
-                    "bad input to processPackageData"
+                    "bad input to processPackageData",
                   );
                   var byteArray = new Uint8Array(arrayBuffer);
                   DataRequest.prototype.byteArray = byteArray;
@@ -2672,7 +2673,7 @@
             if (scriptDirectory.indexOf("blob:") !== 0) {
               scriptDirectory = scriptDirectory.substr(
                 0,
-                scriptDirectory.replace(/[?#].*/, "").lastIndexOf("/") + 1
+                scriptDirectory.replace(/[?#].*/, "").lastIndexOf("/") + 1,
               );
             } else {
               scriptDirectory = "";
@@ -2849,7 +2850,7 @@
                   var ch = u0 - 65536;
                   str += String.fromCharCode(
                     55296 | (ch >> 10),
-                    56320 | (ch & 1023)
+                    56320 | (ch & 1023),
                   );
                 }
               }
@@ -3116,7 +3117,7 @@
                       function (response) {
                         resolve(new Uint8Array(response));
                       },
-                      reject
+                      reject,
                     );
                   });
                 }
@@ -3180,7 +3181,7 @@
                       err("wasm streaming compile failed: " + reason);
                       err("falling back to ArrayBuffer instantiation");
                       return instantiateArrayBuffer(receiveInstantiationResult);
-                    }
+                    },
                   );
                 });
               } else {
@@ -3265,7 +3266,7 @@
               showShareFileModal(
                 UTF8ToString($0),
                 UTF8ToString($1),
-                UTF8ToString($2)
+                UTF8ToString($2),
               );
             },
             287757: ($0) => {
@@ -3447,7 +3448,7 @@
                 trailingSlash = path.substr(-1) === "/";
               path = PATH.normalizeArray(
                 path.split("/").filter((p) => !!p),
-                !isAbsolute
+                !isAbsolute,
               ).join("/");
               if (!path && !isAbsolute) {
                 path = ".";
@@ -3497,7 +3498,7 @@
                 var path = i >= 0 ? arguments[i] : FS.cwd();
                 if (typeof path != "string") {
                   throw new TypeError(
-                    "Arguments to path.resolve must be strings"
+                    "Arguments to path.resolve must be strings",
                   );
                 } else if (!path) {
                   return "";
@@ -3507,7 +3508,7 @@
               }
               resolvedPath = PATH.normalizeArray(
                 resolvedPath.split("/").filter((p) => !!p),
-                !resolvedAbsolute
+                !resolvedAbsolute,
               ).join("/");
               return (resolvedAbsolute ? "/" : "") + resolvedPath || ".";
             },
@@ -3627,7 +3628,7 @@
                         buf,
                         0,
                         BUFSIZE,
-                        -1
+                        -1,
                       );
                     } catch (e) {
                       if (e.toString().includes("EOF")) bytesRead = 0;
@@ -3795,7 +3796,7 @@
                 newCapacity,
                 (prevCapacity *
                   (prevCapacity < CAPACITY_DOUBLING_MAX ? 2 : 1.125)) >>>
-                  0
+                  0,
               );
               if (prevCapacity != 0) newCapacity = Math.max(newCapacity, 256);
               var oldContents = node.contents;
@@ -3813,7 +3814,7 @@
                 node.contents = new Uint8Array(newSize);
                 if (oldContents) {
                   node.contents.set(
-                    oldContents.subarray(0, Math.min(newSize, node.usedBytes))
+                    oldContents.subarray(0, Math.min(newSize, node.usedBytes)),
                   );
                 }
                 node.usedBytes = newSize;
@@ -3923,7 +3924,7 @@
                 if (size > 8 && contents.subarray) {
                   buffer.set(
                     contents.subarray(position, position + size),
-                    offset
+                    offset,
                   );
                 } else {
                   for (var i = 0; i < size; i++)
@@ -3937,7 +3938,7 @@
                 offset,
                 length,
                 position,
-                canOwn
+                canOwn,
               ) {
                 if (buffer.buffer === HEAP8.buffer) {
                   canOwn = false;
@@ -3960,7 +3961,7 @@
                   } else if (position + length <= node.usedBytes) {
                     node.contents.set(
                       buffer.subarray(offset, offset + length),
-                      position
+                      position,
                     );
                     return length;
                   }
@@ -3969,7 +3970,7 @@
                 if (node.contents.subarray && buffer.subarray) {
                   node.contents.set(
                     buffer.subarray(offset, offset + length),
-                    position
+                    position,
                   );
                 } else {
                   for (var i = 0; i < length; i++) {
@@ -3997,7 +3998,7 @@
                 MEMFS.expandFileStorage(stream.node, offset + length);
                 stream.node.usedBytes = Math.max(
                   stream.node.usedBytes,
-                  offset + length
+                  offset + length,
                 );
               },
               mmap: function (stream, length, position, prot, flags) {
@@ -4018,7 +4019,7 @@
                       contents = Array.prototype.slice.call(
                         contents,
                         position,
-                        position + length
+                        position + length,
                       );
                     }
                   }
@@ -4047,7 +4048,7 @@
                   0,
                   length,
                   offset,
-                  false
+                  false,
                 );
                 return 0;
               },
@@ -4061,7 +4062,7 @@
               function (arrayBuffer) {
                 assert(
                   arrayBuffer,
-                  'Loading data file "' + url + '" failed (no arrayBuffer).'
+                  'Loading data file "' + url + '" failed (no arrayBuffer).',
                 );
                 onload(new Uint8Array(arrayBuffer));
                 if (dep) removeRunDependency(dep);
@@ -4072,7 +4073,7 @@
                 } else {
                   throw 'Loading data file "' + url + '" failed.';
                 }
-              }
+              },
             );
             if (dep) addRunDependency(dep);
           }
@@ -4175,7 +4176,7 @@
                 if (FS.isDir(stat.mode)) {
                   check.push.apply(
                     check,
-                    FS.readdir(path).filter(isRealDir).map(toAbsolute(path))
+                    FS.readdir(path).filter(isRealDir).map(toAbsolute(path)),
                   );
                 }
                 entries[path] = {
@@ -4194,7 +4195,7 @@
                 try {
                   var transaction = db.transaction(
                     [IDBFS.DB_STORE_NAME],
-                    "readonly"
+                    "readonly",
                   );
                   transaction.onerror = (e) => {
                     callback(this.error);
@@ -4340,7 +4341,7 @@
               var db = src.type === "remote" ? src.db : dst.db;
               var transaction = db.transaction(
                 [IDBFS.DB_STORE_NAME],
-                "readwrite"
+                "readwrite",
               );
               var store = transaction.objectStore(IDBFS.DB_STORE_NAME);
 
@@ -4415,7 +4416,7 @@
               }
               var parts = PATH.normalizeArray(
                 path.split("/").filter((p) => !!p),
-                false
+                false,
               );
               var current = FS.root;
               var current_path = "/";
@@ -4437,7 +4438,7 @@
                     var link = FS.readlink(current_path);
                     current_path = PATH_FS.resolve(
                       PATH.dirname(current_path),
-                      link
+                      link,
                     );
                     var lookup = FS.lookupPath(current_path, {
                       recurse_count: opts.recurse_count + 1,
@@ -4630,7 +4631,7 @@
               }
               return FS.nodePermissions(
                 node,
-                FS.flagsToPermissionString(flags)
+                FS.flagsToPermissionString(flags),
               );
             },
             MAX_OPEN_FDS: 4096,
@@ -4741,7 +4742,7 @@
                 err(
                   "warning: " +
                     FS.syncFSRequests +
-                    " FS.syncfs operations in flight at once, probably just doing extra work"
+                    " FS.syncfs operations in flight at once, probably just doing extra work",
                 );
               }
               var mounts = FS.getMounts(FS.root.mount);
@@ -5041,7 +5042,7 @@
               }
               return PATH_FS.resolve(
                 FS.getPath(link.parent),
-                link.node_ops.readlink(link)
+                link.node_ops.readlink(link),
               );
             },
             stat: (path, dontFollow) => {
@@ -5272,7 +5273,7 @@
               stream.position = stream.stream_ops.llseek(
                 stream,
                 offset,
-                whence
+                whence,
               );
               stream.ungotten = [];
               return stream.position;
@@ -5304,7 +5305,7 @@
                 buffer,
                 offset,
                 length,
-                position
+                position,
               );
               if (!seeking) stream.position += bytesRead;
               return bytesRead;
@@ -5340,7 +5341,7 @@
                 offset,
                 length,
                 position,
-                canOwn
+                canOwn,
               );
               if (!seeking) stream.position += bytesWritten;
               return bytesWritten;
@@ -5382,7 +5383,7 @@
                 length,
                 position,
                 prot,
-                flags
+                flags,
               );
             },
             msync: (stream, buffer, offset, length, mmapFlags) => {
@@ -5394,7 +5395,7 @@
                 buffer,
                 offset,
                 length,
-                mmapFlags
+                mmapFlags,
               );
             },
             munmap: (stream) => 0,
@@ -5409,7 +5410,7 @@
               opts.encoding = opts.encoding || "binary";
               if (opts.encoding !== "utf8" && opts.encoding !== "binary") {
                 throw new Error(
-                  'Invalid encoding type "' + opts.encoding + '"'
+                  'Invalid encoding type "' + opts.encoding + '"',
                 );
               }
               var ret;
@@ -5435,7 +5436,7 @@
                   data,
                   buf,
                   0,
-                  buf.length
+                  buf.length,
                 );
                 FS.write(
                   stream,
@@ -5443,7 +5444,7 @@
                   0,
                   actualNumBytes,
                   undefined,
-                  opts.canOwn
+                  opts.canOwn,
                 );
               } else if (ArrayBuffer.isView(data)) {
                 FS.write(
@@ -5452,7 +5453,7 @@
                   0,
                   data.byteLength,
                   undefined,
-                  opts.canOwn
+                  opts.canOwn,
                 );
               } else {
                 throw new Error("Unsupported data type");
@@ -5528,7 +5529,7 @@
                   },
                 },
                 {},
-                "/proc/self/fd"
+                "/proc/self/fd",
               );
             },
             createStandardStreams: () => {
@@ -5668,7 +5669,7 @@
             createFile: (parent, name, properties, canRead, canWrite) => {
               var path = PATH.join2(
                 typeof parent == "string" ? parent : FS.getPath(parent),
-                name
+                name,
               );
               var mode = FS.getMode(canRead, canWrite);
               return FS.create(path, mode);
@@ -5700,7 +5701,7 @@
             createDevice: (parent, name, input, output) => {
               var path = PATH.join2(
                 typeof parent == "string" ? parent : FS.getPath(parent),
-                name
+                name,
               );
               var mode = FS.getMode(!!input, !!output);
               if (!FS.createDevice.major) FS.createDevice.major = 64;
@@ -5756,7 +5757,7 @@
                 return true;
               if (typeof XMLHttpRequest != "undefined") {
                 throw new Error(
-                  "Lazy loading should have been performed (contents set) in createLazyFile, but it was not. Lazy loading only works in web workers. Use --embed-file or --preload-file in emcc on the main thread."
+                  "Lazy loading should have been performed (contents set) in createLazyFile, but it was not. Lazy loading only works in web workers. Use --embed-file or --preload-file in emcc on the main thread.",
                 );
               } else if (read_) {
                 try {
@@ -5767,7 +5768,7 @@
                 }
               } else {
                 throw new Error(
-                  "Cannot load without read() or XMLHttpRequest."
+                  "Cannot load without read() or XMLHttpRequest.",
                 );
               }
             },
@@ -5800,10 +5801,10 @@
                     )
                   )
                     throw new Error(
-                      "Couldn't load " + url + ". Status: " + xhr.status
+                      "Couldn't load " + url + ". Status: " + xhr.status,
                     );
                   var datalength = Number(
-                    xhr.getResponseHeader("Content-length")
+                    xhr.getResponseHeader("Content-length"),
                   );
                   var header;
                   var hasByteServing =
@@ -5821,13 +5822,13 @@
                           from +
                           ", " +
                           to +
-                          ") or no bytes requested!"
+                          ") or no bytes requested!",
                       );
                     if (to > datalength - 1)
                       throw new Error(
                         "only " +
                           datalength +
-                          " bytes available! programmer error!"
+                          " bytes available! programmer error!",
                       );
                     var xhr = new XMLHttpRequest();
                     xhr.open("GET", url, false);
@@ -5836,7 +5837,7 @@
                     xhr.responseType = "arraybuffer";
                     if (xhr.overrideMimeType) {
                       xhr.overrideMimeType(
-                        "text/plain; charset=x-user-defined"
+                        "text/plain; charset=x-user-defined",
                       );
                     }
                     xhr.send(null);
@@ -5847,7 +5848,7 @@
                       )
                     )
                       throw new Error(
-                        "Couldn't load " + url + ". Status: " + xhr.status
+                        "Couldn't load " + url + ". Status: " + xhr.status,
                       );
                     if (xhr.response !== undefined) {
                       return new Uint8Array(xhr.response || []);
@@ -5872,7 +5873,7 @@
                     datalength = this.getter(0).length;
                     chunkSize = datalength;
                     out(
-                      "LazyFiles on gzip forces download of the whole file when length is accessed"
+                      "LazyFiles on gzip forces download of the whole file when length is accessed",
                     );
                   }
                   this._length = datalength;
@@ -5916,7 +5917,7 @@
                 name,
                 properties,
                 canRead,
-                canWrite
+                canWrite,
               );
               if (properties.contents) {
                 node.contents = properties.contents;
@@ -5985,7 +5986,7 @@
               onerror,
               dontCreateFile,
               canOwn,
-              preFinish
+              preFinish,
             ) => {
               var fullname = name
                 ? PATH_FS.resolve(PATH.join2(parent, name))
@@ -6002,7 +6003,7 @@
                       byteArray,
                       canRead,
                       canWrite,
-                      canOwn
+                      canOwn,
                     );
                   }
                   if (onload) onload();
@@ -6016,7 +6017,7 @@
                     () => {
                       if (onerror) onerror();
                       removeRunDependency(dep);
-                    }
+                    },
                   )
                 ) {
                   return;
@@ -6061,7 +6062,7 @@
                 var db = openRequest.result;
                 var transaction = db.transaction(
                   [FS.DB_STORE_NAME],
-                  "readwrite"
+                  "readwrite",
                 );
                 var files = transaction.objectStore(FS.DB_STORE_NAME);
                 var ok = 0,
@@ -6075,7 +6076,7 @@
                 paths.forEach((path) => {
                   var putRequest = files.put(
                     FS.analyzePath(path).object.contents,
-                    path
+                    path,
                   );
                   putRequest.onsuccess = () => {
                     ok++;
@@ -6105,7 +6106,7 @@
                 try {
                   var transaction = db.transaction(
                     [FS.DB_STORE_NAME],
-                    "readonly"
+                    "readonly",
                   );
                 } catch (e) {
                   onerror(e);
@@ -6132,7 +6133,7 @@
                       getRequest.result,
                       true,
                       true,
-                      true
+                      true,
                     );
                     ok++;
                     if (ok + fail == total) finish();
@@ -6165,7 +6166,7 @@
                       0,
                       Browser.mainLoop.tickStartTime +
                         value -
-                        _emscripten_get_now()
+                        _emscripten_get_now(),
                     ) | 0;
                   setTimeout(Browser.mainLoop.runner, timeUntilNextTick);
                 };
@@ -6192,7 +6193,7 @@
                 addEventListener(
                   "message",
                   Browser_setImmediate_messageHandler,
-                  true
+                  true,
                 );
                 setImmediate = function Browser_emulated_setImmediate(func) {
                   setImmediates.push(func);
@@ -6233,11 +6234,11 @@
             fps,
             simulateInfiniteLoop,
             arg,
-            noSetTiming
+            noSetTiming,
           ) {
             assert(
               !Browser.mainLoop.func,
-              "emscripten_set_main_loop: there can only be one main loop function at once: call emscripten_cancel_main_loop to cancel the previous one before setting a new one with different parameters."
+              "emscripten_set_main_loop: there can only be one main loop function at once: call emscripten_cancel_main_loop to cancel the previous one before setting a new one with different parameters.",
             );
             Browser.mainLoop.func = browserIterationFunc;
             Browser.mainLoop.arg = arg;
@@ -6274,7 +6275,7 @@
                     blocker.name +
                     '" took ' +
                     (Date.now() - start) +
-                    " ms"
+                    " ms",
                 );
                 Browser.mainLoop.updateStatus();
                 if (!checkIsRunning()) return;
@@ -6376,7 +6377,7 @@
                           (expected - remaining) +
                           "/" +
                           expected +
-                          ")"
+                          ")",
                       );
                     } else {
                       Module["setStatus"](message);
@@ -6412,17 +6413,17 @@
               } catch (e) {
                 Browser.hasBlobConstructor = false;
                 out(
-                  "warning: no blob constructor, cannot create blobs with mimetypes"
+                  "warning: no blob constructor, cannot create blobs with mimetypes",
                 );
               }
               Browser.BlobBuilder =
                 typeof MozBlobBuilder != "undefined"
                   ? MozBlobBuilder
                   : typeof WebKitBlobBuilder != "undefined"
-                  ? WebKitBlobBuilder
-                  : !Browser.hasBlobConstructor
-                  ? out("warning: no BlobBuilder")
-                  : null;
+                    ? WebKitBlobBuilder
+                    : !Browser.hasBlobConstructor
+                      ? out("warning: no BlobBuilder")
+                      : null;
               Browser.URLObject =
                 typeof window != "undefined"
                   ? window.URL
@@ -6434,7 +6435,7 @@
                 typeof Browser.URLObject == "undefined"
               ) {
                 out(
-                  "warning: Browser does not support creating object URLs. Built-in browser image decoding will not be available."
+                  "warning: Browser does not support creating object URLs. Built-in browser image decoding will not be available.",
                 );
                 Module.noImageDecoding = true;
               }
@@ -6448,7 +6449,7 @@
                 byteArray,
                 name,
                 onload,
-                onerror
+                onerror,
               ) {
                 var b = null;
                 if (Browser.hasBlobConstructor) {
@@ -6465,7 +6466,7 @@
                     warnOnce(
                       "Blob constructor present but fails: " +
                         e +
-                        "; falling back to blob builder"
+                        "; falling back to blob builder",
                     );
                   }
                 }
@@ -6479,7 +6480,7 @@
                 img.onload = () => {
                   assert(
                     img.complete,
-                    "Image " + name + " could not be decoded"
+                    "Image " + name + " could not be decoded",
                   );
                   var canvas = document.createElement("canvas");
                   canvas.width = img.width;
@@ -6513,7 +6514,7 @@
                 byteArray,
                 name,
                 onload,
-                onerror
+                onerror,
               ) {
                 var done = false;
 
@@ -6545,14 +6546,14 @@
                     function () {
                       finish(audio);
                     },
-                    false
+                    false,
                   );
                   audio.onerror = function audio_onerror(event) {
                     if (done) return;
                     out(
                       "warning: browser could not fully decode audio " +
                         name +
-                        ", trying slower base64 approach"
+                        ", trying slower base64 approach",
                     );
 
                     function encode64(data) {
@@ -6622,22 +6623,22 @@
                 document.addEventListener(
                   "pointerlockchange",
                   pointerLockChange,
-                  false
+                  false,
                 );
                 document.addEventListener(
                   "mozpointerlockchange",
                   pointerLockChange,
-                  false
+                  false,
                 );
                 document.addEventListener(
                   "webkitpointerlockchange",
                   pointerLockChange,
-                  false
+                  false,
                 );
                 document.addEventListener(
                   "mspointerlockchange",
                   pointerLockChange,
-                  false
+                  false,
                 );
                 if (Module["elementPointerLock"]) {
                   canvas.addEventListener(
@@ -6651,7 +6652,7 @@
                         ev.preventDefault();
                       }
                     },
-                    false
+                    false,
                   );
                 }
               }
@@ -6660,7 +6661,7 @@
               byteArray,
               fullname,
               finish,
-              onerror
+              onerror,
             ) {
               Browser.init();
               var handled = false;
@@ -6677,7 +6678,7 @@
               canvas,
               useWebGL,
               setInModule,
-              webGLContextAttributes
+              webGLContextAttributes,
             ) {
               if (useWebGL && Module.ctx && canvas == Module.canvas)
                 return Module.ctx;
@@ -6710,16 +6711,16 @@
                 if (!useWebGL)
                   assert(
                     typeof GLctx == "undefined",
-                    "cannot set in module if GLctx is used, but we are a non-GL context that would replace it"
+                    "cannot set in module if GLctx is used, but we are a non-GL context that would replace it",
                   );
                 Module.ctx = ctx;
                 if (useWebGL) GL.makeContextCurrent(contextHandle);
                 Module.useWebGL = useWebGL;
-                Browser.moduleContextCreatedCallbacks.forEach(function (
-                  callback
-                ) {
-                  callback();
-                });
+                Browser.moduleContextCreatedCallbacks.forEach(
+                  function (callback) {
+                    callback();
+                  },
+                );
                 Browser.init();
               }
               return ctx;
@@ -6759,7 +6760,7 @@
                 } else {
                   canvasContainer.parentNode.insertBefore(
                     canvas,
-                    canvasContainer
+                    canvasContainer,
                   );
                   canvasContainer.parentNode.removeChild(canvasContainer);
                   if (Browser.resizeCanvas) {
@@ -6778,22 +6779,22 @@
                 document.addEventListener(
                   "fullscreenchange",
                   fullscreenChange,
-                  false
+                  false,
                 );
                 document.addEventListener(
                   "mozfullscreenchange",
                   fullscreenChange,
-                  false
+                  false,
                 );
                 document.addEventListener(
                   "webkitfullscreenchange",
                   fullscreenChange,
-                  false
+                  false,
                 );
                 document.addEventListener(
                   "MSFullscreenChange",
                   fullscreenChange,
-                  false
+                  false,
                 );
               }
               var canvasContainer = document.createElement("div");
@@ -6806,14 +6807,14 @@
                 (canvasContainer["webkitRequestFullscreen"]
                   ? function () {
                       canvasContainer["webkitRequestFullscreen"](
-                        Element["ALLOW_KEYBOARD_INPUT"]
+                        Element["ALLOW_KEYBOARD_INPUT"],
                       );
                     }
                   : null) ||
                 (canvasContainer["webkitRequestFullScreen"]
                   ? function () {
                       canvasContainer["webkitRequestFullScreen"](
-                        Element["ALLOW_KEYBOARD_INPUT"]
+                        Element["ALLOW_KEYBOARD_INPUT"],
                       );
                     }
                   : null);
@@ -7110,7 +7111,7 @@
               if (!surfData.image) {
                 surfData.image = surfData.ctx.createImageData(
                   surfData.width,
-                  surfData.height
+                  surfData.height,
                 );
               }
               if (!SDL.defaults.opaqueFrontBuffer) return;
@@ -7119,7 +7120,7 @@
                 0,
                 0,
                 surfData.width,
-                surfData.height
+                surfData.height,
               );
             }
             if (surf == SDL.screen && SDL.defaults.opaqueFrontBuffer) {
@@ -7452,7 +7453,7 @@
               rmask,
               gmask,
               bmask,
-              amask
+              amask,
             ) {
               flags = flags || 0;
               var is_SDL_HWSURFACE = flags & 1;
@@ -7508,7 +7509,7 @@
                 canvas,
                 is_SDL_OPENGL,
                 usePageCanvas,
-                webGLContextAttributes
+                webGLContextAttributes,
               );
               SDL.surfaces[surf] = {
                 width: width,
@@ -7542,7 +7543,7 @@
               var buffer = surfData.buffer;
               if (!surfData.image.data32) {
                 surfData.image.data32 = new Uint32Array(
-                  surfData.image.data.buffer
+                  surfData.image.data.buffer,
                 );
               }
               var data32 = surfData.image.data32;
@@ -7628,12 +7629,12 @@
                 dr.x,
                 dr.y,
                 blitw,
-                blith
+                blith,
               );
               dstData.ctx.globalAlpha = oldAlpha;
               if (dst != SDL.screen) {
                 warnOnce(
-                  "WARNING: copying canvas data to memory for compatibility"
+                  "WARNING: copying canvas data to memory for compatibility",
                 );
                 _SDL_LockSurface(dst);
                 dstData.locked--;
@@ -7731,8 +7732,8 @@
                     delta == 0
                       ? 0
                       : delta > 0
-                      ? Math.max(delta, 1)
-                      : Math.min(delta, -1);
+                        ? Math.max(delta, 1)
+                        : Math.min(delta, -1);
                   var button = delta > 0 ? 3 : 4;
                   SDL.events.push({
                     type: "mousedown",
@@ -7950,7 +7951,7 @@
               while (SDL.pollEvent(SDL.eventHandlerTemp)) {
                 getWasmTableEntry(SDL.eventHandler)(
                   SDL.eventHandlerContext,
-                  SDL.eventHandlerTemp
+                  SDL.eventHandlerTemp,
                 );
               }
             },
@@ -7998,7 +7999,7 @@
                 case "keypress": {
                   HEAP32[ptr >> 2] = SDL.DOMEventToSDLEvent[event.type];
                   var cStr = intArrayFromString(
-                    String.fromCharCode(event.charCode)
+                    String.fromCharCode(event.charCode),
                   );
                   for (var i = 0; i < cStr.length; ++i) {
                     HEAP8[(ptr + (8 + i)) >> 0] = cStr[i];
@@ -8056,42 +8057,42 @@
                     return false;
                   HEAP32[ptr >> 2] = SDL.DOMEventToSDLEvent[event.type];
                   HEAP32[(ptr + 4) >> 2] = _SDL_GetTicks();
-                  (tempI64 = [
+                  ((tempI64 = [
                     touch.deviceID >>> 0,
                     ((tempDouble = touch.deviceID),
                     +Math.abs(tempDouble) >= 1
                       ? tempDouble > 0
                         ? (Math.min(
                             +Math.floor(tempDouble / 4294967296),
-                            4294967295
+                            4294967295,
                           ) |
                             0) >>>
                           0
                         : ~~+Math.ceil(
-                            (tempDouble - +(~~tempDouble >>> 0)) / 4294967296
+                            (tempDouble - +(~~tempDouble >>> 0)) / 4294967296,
                           ) >>> 0
                       : 0),
                   ]),
                     (HEAP32[(ptr + 8) >> 2] = tempI64[0]),
-                    (HEAP32[(ptr + 12) >> 2] = tempI64[1]);
-                  (tempI64 = [
+                    (HEAP32[(ptr + 12) >> 2] = tempI64[1]));
+                  ((tempI64 = [
                     touch.identifier >>> 0,
                     ((tempDouble = touch.identifier),
                     +Math.abs(tempDouble) >= 1
                       ? tempDouble > 0
                         ? (Math.min(
                             +Math.floor(tempDouble / 4294967296),
-                            4294967295
+                            4294967295,
                           ) |
                             0) >>>
                           0
                         : ~~+Math.ceil(
-                            (tempDouble - +(~~tempDouble >>> 0)) / 4294967296
+                            (tempDouble - +(~~tempDouble >>> 0)) / 4294967296,
                           ) >>> 0
                       : 0),
                   ]),
                     (HEAP32[(ptr + 16) >> 2] = tempI64[0]),
-                    (HEAP32[(ptr + 20) >> 2] = tempI64[1]);
+                    (HEAP32[(ptr + 20) >> 2] = tempI64[1]));
                   HEAPF32[(ptr + 24) >> 2] = x;
                   HEAPF32[(ptr + 28) >> 2] = y;
                   HEAPF32[(ptr + 32) >> 2] = dx;
@@ -8127,7 +8128,7 @@
                   HEAP8[(ptr + 4) >> 0] = event.index;
                   HEAP8[(ptr + 5) >> 0] = event.axis;
                   HEAP32[(ptr + 8) >> 2] = SDL.joystickAxisValueConversion(
-                    event.value
+                    event.value,
                   );
                   break;
                 }
@@ -8240,7 +8241,7 @@
                 audio.webAudioNode["connect"](audio.webAudioPannerNode);
                 audio.webAudioPannerNode["connect"](audio.webAudioGainNode);
                 audio.webAudioGainNode["connect"](
-                  SDL.audioContext["destination"]
+                  SDL.audioContext["destination"],
                 );
                 audio.webAudioNode["start"](0, audio.currentPosition);
                 audio.startTime =
@@ -8279,7 +8280,7 @@
             fillWebAudioBufferFromHeap: function (
               heapPtr,
               sizeSamplesPerChannel,
-              dstAudioBuffer
+              dstAudioBuffer,
             ) {
               var audio = SDL_audio();
               var numChannels = audio.channels;
@@ -8323,13 +8324,13 @@
                     surfData.source,
                     surfData.width,
                     surfData.height,
-                  ]
+                  ],
               );
               var image = surfData.ctx.getImageData(
                 0,
                 0,
                 surfData.width,
-                surfData.height
+                surfData.height,
               );
               var data = image.data;
               var num = Math.min(surfData.width, surfData.height);
@@ -8343,7 +8344,7 @@
                       data[i * surfData.width * 4 + i * 4 + 1],
                       data[i * surfData.width * 4 + i * 4 + 2],
                       data[i * surfData.width * 4 + i * 4 + 3],
-                    ]
+                    ],
                 );
               }
             },
@@ -8384,7 +8385,7 @@
                   var i;
                   for (i = 0; i < state.buttons.length; i++) {
                     var buttonState = SDL.getJoystickButtonState(
-                      state.buttons[i]
+                      state.buttons[i],
                     );
                     if (buttonState !== prevState.buttons[i]) {
                       SDL.events.push({
@@ -8450,15 +8451,15 @@
                 Module["keyboardListeningElement"] || document;
               keyboardListeningElement.addEventListener(
                 "keydown",
-                SDL.receiveEvent
+                SDL.receiveEvent,
               );
               keyboardListeningElement.addEventListener(
                 "keyup",
-                SDL.receiveEvent
+                SDL.receiveEvent,
               );
               keyboardListeningElement.addEventListener(
                 "keypress",
-                SDL.receiveEvent
+                SDL.receiveEvent,
               );
               window.addEventListener("focus", SDL.receiveEvent);
               window.addEventListener("blur", SDL.receiveEvent);
@@ -8556,7 +8557,7 @@
               } else if (SDL.audio.channels != 1 && SDL.audio.channels != 2) {
                 out(
                   "Warning: Using untested number of audio channels " +
-                    SDL.audio.channels
+                    SDL.audio.channels,
                 );
               }
               if (SDL.audio.samples < 128 || SDL.audio.samples > 524288) {
@@ -8611,7 +8612,7 @@
                   getWasmTableEntry(SDL.audio.callback)(
                     SDL.audio.userdata,
                     SDL.audio.buffer,
-                    SDL.audio.bufferSize
+                    SDL.audio.bufferSize,
                   );
                   SDL.audio.pushAudio(SDL.audio.buffer, SDL.audio.bufferSize);
                 }
@@ -8632,8 +8633,8 @@
                     SDL.audio.caller,
                     Math.max(
                       0,
-                      1e3 * (secsUntilNextPlayStart - preemptBufferFeedSecs)
-                    )
+                      1e3 * (secsUntilNextPlayStart - preemptBufferFeedSecs),
+                    ),
                   );
                   if (
                     SDL.audio.numAudioTimersPending <
@@ -8661,19 +8662,19 @@
                   var soundBuffer = SDL.audioContext["createBuffer"](
                     SDL.audio.channels,
                     sizeSamplesPerChannel,
-                    SDL.audio.freq
+                    SDL.audio.freq,
                   );
                   source["connect"](SDL.audioContext["destination"]);
                   SDL.fillWebAudioBufferFromHeap(
                     ptr,
                     sizeSamplesPerChannel,
-                    soundBuffer
+                    soundBuffer,
                   );
                   source["buffer"] = soundBuffer;
                   var curtime = SDL.audioContext["currentTime"];
                   var playtime = Math.max(
                     curtime + SDL.audio.bufferingDelay,
-                    SDL.audio.nextPlayTime
+                    SDL.audio.nextPlayTime,
                   );
                   if (typeof source["start"] != "undefined") {
                     source["start"](playtime);
@@ -8684,7 +8685,7 @@
                     playtime + SDL.audio.bufferDurationSecs;
                 } catch (e) {
                   out(
-                    "Web Audio API error playing back audio: " + e.toString()
+                    "Web Audio API error playing back audio: " + e.toString(),
                   );
                 }
               };
@@ -8702,7 +8703,7 @@
               out(
                 'Initializing SDL audio threw an exception: "' +
                   e.toString() +
-                  '"! Continuing without audio.'
+                  '"! Continuing without audio.',
               );
               SDL.audio = null;
               SDL.allocateChannels(0);
@@ -8766,7 +8767,7 @@
                   filename ? UTF8ToString(filename) : "unknown filename",
                   line,
                   func ? UTF8ToString(func) : "unknown function",
-                ]
+                ],
             );
           }
           var SYSCALLS = {
@@ -8813,24 +8814,24 @@
               HEAP32[(buf + 24) >> 2] = stat.gid;
               HEAP32[(buf + 28) >> 2] = stat.rdev;
               HEAP32[(buf + 32) >> 2] = 0;
-              (tempI64 = [
+              ((tempI64 = [
                 stat.size >>> 0,
                 ((tempDouble = stat.size),
                 +Math.abs(tempDouble) >= 1
                   ? tempDouble > 0
                     ? (Math.min(
                         +Math.floor(tempDouble / 4294967296),
-                        4294967295
+                        4294967295,
                       ) |
                         0) >>>
                       0
                     : ~~+Math.ceil(
-                        (tempDouble - +(~~tempDouble >>> 0)) / 4294967296
+                        (tempDouble - +(~~tempDouble >>> 0)) / 4294967296,
                       ) >>> 0
                   : 0),
               ]),
                 (HEAP32[(buf + 40) >> 2] = tempI64[0]),
-                (HEAP32[(buf + 44) >> 2] = tempI64[1]);
+                (HEAP32[(buf + 44) >> 2] = tempI64[1]));
               HEAP32[(buf + 48) >> 2] = 4096;
               HEAP32[(buf + 52) >> 2] = stat.blocks;
               HEAP32[(buf + 56) >> 2] = (stat.atime.getTime() / 1e3) | 0;
@@ -8839,24 +8840,24 @@
               HEAP32[(buf + 68) >> 2] = 0;
               HEAP32[(buf + 72) >> 2] = (stat.ctime.getTime() / 1e3) | 0;
               HEAP32[(buf + 76) >> 2] = 0;
-              (tempI64 = [
+              ((tempI64 = [
                 stat.ino >>> 0,
                 ((tempDouble = stat.ino),
                 +Math.abs(tempDouble) >= 1
                   ? tempDouble > 0
                     ? (Math.min(
                         +Math.floor(tempDouble / 4294967296),
-                        4294967295
+                        4294967295,
                       ) |
                         0) >>>
                       0
                     : ~~+Math.ceil(
-                        (tempDouble - +(~~tempDouble >>> 0)) / 4294967296
+                        (tempDouble - +(~~tempDouble >>> 0)) / 4294967296,
                       ) >>> 0
                   : 0),
               ]),
                 (HEAP32[(buf + 80) >> 2] = tempI64[0]),
-                (HEAP32[(buf + 84) >> 2] = tempI64[1]);
+                (HEAP32[(buf + 84) >> 2] = tempI64[1]));
               return 0;
             },
             doMsync: function (addr, stream, len, flags, offset) {
@@ -8996,47 +8997,47 @@
                   type = FS.isChrdev(child.mode)
                     ? 2
                     : FS.isDir(child.mode)
-                    ? 4
-                    : FS.isLink(child.mode)
-                    ? 10
-                    : 8;
+                      ? 4
+                      : FS.isLink(child.mode)
+                        ? 10
+                        : 8;
                 }
-                (tempI64 = [
+                ((tempI64 = [
                   id >>> 0,
                   ((tempDouble = id),
                   +Math.abs(tempDouble) >= 1
                     ? tempDouble > 0
                       ? (Math.min(
                           +Math.floor(tempDouble / 4294967296),
-                          4294967295
+                          4294967295,
                         ) |
                           0) >>>
                         0
                       : ~~+Math.ceil(
-                          (tempDouble - +(~~tempDouble >>> 0)) / 4294967296
+                          (tempDouble - +(~~tempDouble >>> 0)) / 4294967296,
                         ) >>> 0
                     : 0),
                 ]),
                   (HEAP32[(dirp + pos) >> 2] = tempI64[0]),
-                  (HEAP32[(dirp + pos + 4) >> 2] = tempI64[1]);
-                (tempI64 = [
+                  (HEAP32[(dirp + pos + 4) >> 2] = tempI64[1]));
+                ((tempI64 = [
                   ((idx + 1) * struct_size) >>> 0,
                   ((tempDouble = (idx + 1) * struct_size),
                   +Math.abs(tempDouble) >= 1
                     ? tempDouble > 0
                       ? (Math.min(
                           +Math.floor(tempDouble / 4294967296),
-                          4294967295
+                          4294967295,
                         ) |
                           0) >>>
                         0
                       : ~~+Math.ceil(
-                          (tempDouble - +(~~tempDouble >>> 0)) / 4294967296
+                          (tempDouble - +(~~tempDouble >>> 0)) / 4294967296,
                         ) >>> 0
                     : 0),
                 ]),
                   (HEAP32[(dirp + pos + 8) >> 2] = tempI64[0]),
-                  (HEAP32[(dirp + pos + 12) >> 2] = tempI64[1]);
+                  (HEAP32[(dirp + pos + 12) >> 2] = tempI64[1]));
                 HEAP16[(dirp + pos + 16) >> 1] = 280;
                 HEAP8[(dirp + pos + 18) >> 0] = type;
                 stringToUTF8(name, dirp + pos + 19, 256);
@@ -9211,7 +9212,7 @@
             var summerOffset = new Date(
               date.getFullYear(),
               6,
-              1
+              1,
             ).getTimezoneOffset();
             var winterOffset = start.getTimezoneOffset();
             var dst =
@@ -9229,7 +9230,7 @@
               HEAP32[(tmPtr + 8) >> 2],
               HEAP32[(tmPtr + 4) >> 2],
               HEAP32[tmPtr >> 2],
-              0
+              0,
             );
             var dst = HEAP32[(tmPtr + 32) >> 2];
             var guessedOffset = date.getTimezoneOffset();
@@ -9237,13 +9238,13 @@
             var summerOffset = new Date(
               date.getFullYear(),
               6,
-              1
+              1,
             ).getTimezoneOffset();
             var winterOffset = start.getTimezoneOffset();
             var dstOffset = Math.min(winterOffset, summerOffset);
             if (dst < 0) {
               HEAP32[(tmPtr + 32) >> 2] = Number(
-                summerOffset != winterOffset && dstOffset == guessedOffset
+                summerOffset != winterOffset && dstOffset == guessedOffset,
               );
             } else if (dst > 0 != (dstOffset == guessedOffset)) {
               var nonDstOffset = Math.max(winterOffset, summerOffset);
@@ -9307,7 +9308,7 @@
             while ((ch = HEAPU8[sigPtr++])) {
               buf += (ch != 105) & buf;
               readAsmConstArgsArray.push(
-                ch == 105 ? HEAP32[buf] : HEAPF64[buf++ >> 1]
+                ch == 105 ? HEAP32[buf] : HEAPF64[buf++ >> 1],
               );
               ++buf;
             }
@@ -9414,7 +9415,7 @@
               h.target.removeEventListener(
                 h.eventTypeString,
                 h.eventListenerFunc,
-                h.useCapture
+                h.useCapture,
               );
               JSEvents.eventHandlers.splice(i, 1);
             },
@@ -9432,7 +9433,7 @@
                 eventHandler.target.addEventListener(
                   eventHandler.eventTypeString,
                   jsEventHandler,
-                  eventHandler.useCapture
+                  eventHandler.useCapture,
                 );
                 JSEvents.eventHandlers.push(eventHandler);
                 JSEvents.registerRemoveEventListeners();
@@ -9561,11 +9562,11 @@
               if (!fullscreenElement) {
                 document.removeEventListener(
                   "fullscreenchange",
-                  restoreOldStyle
+                  restoreOldStyle,
                 );
                 document.removeEventListener(
                   "webkitfullscreenchange",
-                  restoreOldStyle
+                  restoreOldStyle,
                 );
                 setCanvasElementSize(canvas, oldWidth, oldHeight);
                 canvas.style.width = oldCssWidth;
@@ -9591,11 +9592,11 @@
                   canvas.GLctxObject.GLctx.viewport(0, 0, oldWidth, oldHeight);
                 if (currentFullscreenStrategy.canvasResizedCallback) {
                   getWasmTableEntry(
-                    currentFullscreenStrategy.canvasResizedCallback
+                    currentFullscreenStrategy.canvasResizedCallback,
                   )(
                     37,
                     0,
-                    currentFullscreenStrategy.canvasResizedCallbackUserData
+                    currentFullscreenStrategy.canvasResizedCallbackUserData,
                   );
                 }
               }
@@ -9603,7 +9604,7 @@
             document.addEventListener("fullscreenchange", restoreOldStyle);
             document.addEventListener(
               "webkitfullscreenchange",
-              restoreOldStyle
+              restoreOldStyle,
             );
             return restoreOldStyle;
           }
@@ -9633,7 +9634,7 @@
               setLetterbox(
                 target,
                 (cssHeight - windowedCssHeight) / 2,
-                (cssWidth - windowedCssWidth) / 2
+                (cssWidth - windowedCssWidth) / 2,
               );
               cssWidth = windowedCssWidth;
               cssHeight = windowedCssHeight;
@@ -9696,7 +9697,7 @@
               getWasmTableEntry(strategy.canvasResizedCallback)(
                 37,
                 0,
-                strategy.canvasResizedCallbackUserData
+                strategy.canvasResizedCallbackUserData,
               );
             }
             return 0;
@@ -9728,7 +9729,7 @@
           function _emscripten_request_fullscreen_strategy(
             target,
             deferUntilInEventHandler,
-            fullscreenStrategy
+            fullscreenStrategy,
           ) {
             var strategy = {
               scaleMode: HEAP32[fullscreenStrategy >> 2],
@@ -9767,11 +9768,11 @@
               var overGrownHeapSize = oldSize * (1 + 0.2 / cutDown);
               overGrownHeapSize = Math.min(
                 overGrownHeapSize,
-                requestedSize + 100663296
+                requestedSize + 100663296,
               );
               var newSize = Math.min(
                 maxHeapSize,
-                alignUp(Math.max(requestedSize, overGrownHeapSize), 65536)
+                alignUp(Math.max(requestedSize, overGrownHeapSize), 65536),
               );
               var replacement = emscripten_realloc_buffer(newSize);
               if (replacement) {
@@ -9813,7 +9814,7 @@
             callbackfunc,
             eventTypeId,
             eventTypeString,
-            targetThread
+            targetThread,
           ) {
             if (!JSEvents.mouseEvent) JSEvents.mouseEvent = _malloc(72);
             target = findEventTarget(target);
@@ -9824,7 +9825,7 @@
                 getWasmTableEntry(callbackfunc)(
                   eventTypeId,
                   JSEvents.mouseEvent,
-                  userData
+                  userData,
                 )
               )
                 e.preventDefault();
@@ -9848,7 +9849,7 @@
             userData,
             useCapture,
             callbackfunc,
-            targetThread
+            targetThread,
           ) {
             registerMouseEventCallback(
               target,
@@ -9857,7 +9858,7 @@
               callbackfunc,
               5,
               "mousedown",
-              targetThread
+              targetThread,
             );
             return 0;
           }
@@ -9867,7 +9868,7 @@
             userData,
             useCapture,
             callbackfunc,
-            targetThread
+            targetThread,
           ) {
             registerMouseEventCallback(
               target,
@@ -9876,7 +9877,7 @@
               callbackfunc,
               8,
               "mousemove",
-              targetThread
+              targetThread,
             );
             return 0;
           }
@@ -9886,7 +9887,7 @@
             userData,
             useCapture,
             callbackfunc,
-            targetThread
+            targetThread,
           ) {
             registerMouseEventCallback(
               target,
@@ -9895,7 +9896,7 @@
               callbackfunc,
               6,
               "mouseup",
-              targetThread
+              targetThread,
             );
             return 0;
           }
@@ -9907,7 +9908,7 @@
             callbackfunc,
             eventTypeId,
             eventTypeString,
-            targetThread
+            targetThread,
           ) {
             if (!JSEvents.touchEvent) JSEvents.touchEvent = _malloc(1696);
             target = findEventTarget(target);
@@ -9961,7 +9962,7 @@
                 getWasmTableEntry(callbackfunc)(
                   eventTypeId,
                   touchEvent,
-                  userData
+                  userData,
                 )
               )
                 e.preventDefault();
@@ -9984,7 +9985,7 @@
             userData,
             useCapture,
             callbackfunc,
-            targetThread
+            targetThread,
           ) {
             registerTouchEventCallback(
               target,
@@ -9993,7 +9994,7 @@
               callbackfunc,
               25,
               "touchcancel",
-              targetThread
+              targetThread,
             );
             return 0;
           }
@@ -10003,7 +10004,7 @@
             userData,
             useCapture,
             callbackfunc,
-            targetThread
+            targetThread,
           ) {
             registerTouchEventCallback(
               target,
@@ -10012,7 +10013,7 @@
               callbackfunc,
               23,
               "touchend",
-              targetThread
+              targetThread,
             );
             return 0;
           }
@@ -10022,7 +10023,7 @@
             userData,
             useCapture,
             callbackfunc,
-            targetThread
+            targetThread,
           ) {
             registerTouchEventCallback(
               target,
@@ -10031,7 +10032,7 @@
               callbackfunc,
               24,
               "touchmove",
-              targetThread
+              targetThread,
             );
             return 0;
           }
@@ -10041,7 +10042,7 @@
             userData,
             useCapture,
             callbackfunc,
-            targetThread
+            targetThread,
           ) {
             registerTouchEventCallback(
               target,
@@ -10050,7 +10051,7 @@
               callbackfunc,
               22,
               "touchstart",
-              targetThread
+              targetThread,
             );
             return 0;
           }
@@ -10106,24 +10107,24 @@
               if (isNaN(offset)) return 61;
               var stream = SYSCALLS.getStreamFromFD(fd);
               FS.llseek(stream, offset, whence);
-              (tempI64 = [
+              ((tempI64 = [
                 stream.position >>> 0,
                 ((tempDouble = stream.position),
                 +Math.abs(tempDouble) >= 1
                   ? tempDouble > 0
                     ? (Math.min(
                         +Math.floor(tempDouble / 4294967296),
-                        4294967295
+                        4294967295,
                       ) |
                         0) >>>
                       0
                     : ~~+Math.ceil(
-                        (tempDouble - +(~~tempDouble >>> 0)) / 4294967296
+                        (tempDouble - +(~~tempDouble >>> 0)) / 4294967296,
                       ) >>> 0
                   : 0),
               ]),
                 (HEAP32[newOffset >> 2] = tempI64[0]),
-                (HEAP32[(newOffset + 4) >> 2] = tempI64[1]);
+                (HEAP32[(newOffset + 4) >> 2] = tempI64[1]));
               if (stream.getdents && offset === 0 && whence === 0)
                 stream.getdents = null;
               return 0;
@@ -10170,7 +10171,7 @@
                 mode,
                 first,
                 count,
-                primcount
+                primcount,
               ) {
                 ext["drawArraysInstancedANGLE"](mode, first, count, primcount);
               };
@@ -10179,14 +10180,14 @@
                 count,
                 type,
                 indices,
-                primcount
+                primcount,
               ) {
                 ext["drawElementsInstancedANGLE"](
                   mode,
                   count,
                   type,
                   indices,
-                  primcount
+                  primcount,
                 );
               };
               return 1;
@@ -10223,18 +10224,18 @@
           }
 
           function __webgl_enable_WEBGL_draw_instanced_base_vertex_base_instance(
-            ctx
+            ctx,
           ) {
             return !!(ctx.dibvbi = ctx.getExtension(
-              "WEBGL_draw_instanced_base_vertex_base_instance"
+              "WEBGL_draw_instanced_base_vertex_base_instance",
             ));
           }
 
           function __webgl_enable_WEBGL_multi_draw_instanced_base_vertex_base_instance(
-            ctx
+            ctx,
           ) {
             return !!(ctx.mdibvbi = ctx.getExtension(
-              "WEBGL_multi_draw_instanced_base_vertex_base_instance"
+              "WEBGL_multi_draw_instanced_base_vertex_base_instance",
             ));
           }
 
@@ -10278,7 +10279,7 @@
                 var len = length ? HEAP32[(length + i * 4) >> 2] : -1;
                 source += UTF8ToString(
                   HEAP32[(string + i * 4) >> 2],
-                  len < 0 ? undefined : len
+                  len < 0 ? undefined : len,
                 );
               }
               return source;
@@ -10335,7 +10336,7 @@
                 GL.currentContext = null;
               if (typeof JSEvents == "object")
                 JSEvents.removeAllHandlersOnTarget(
-                  GL.contexts[contextHandle].GLctx.canvas
+                  GL.contexts[contextHandle].GLctx.canvas,
                 );
               if (
                 GL.contexts[contextHandle] &&
@@ -10353,19 +10354,19 @@
               __webgl_enable_OES_vertex_array_object(GLctx);
               __webgl_enable_WEBGL_draw_buffers(GLctx);
               __webgl_enable_WEBGL_draw_instanced_base_vertex_base_instance(
-                GLctx
+                GLctx,
               );
               __webgl_enable_WEBGL_multi_draw_instanced_base_vertex_base_instance(
-                GLctx
+                GLctx,
               );
               if (context.version >= 2) {
                 GLctx.disjointTimerQueryExt = GLctx.getExtension(
-                  "EXT_disjoint_timer_query_webgl2"
+                  "EXT_disjoint_timer_query_webgl2",
                 );
               }
               if (context.version < 2 || !GLctx.disjointTimerQueryExt) {
                 GLctx.disjointTimerQueryExt = GLctx.getExtension(
-                  "EXT_disjoint_timer_query"
+                  "EXT_disjoint_timer_query",
                 );
               }
               __webgl_enable_WEBGL_multi_draw(GLctx);
@@ -10422,7 +10423,7 @@
               GLctx.bufferData(
                 target,
                 data ? HEAPU8.subarray(data, data + size) : size,
-                usage
+                usage,
               );
             }
           }
@@ -10542,13 +10543,13 @@
             target,
             attachment,
             renderbuffertarget,
-            renderbuffer
+            renderbuffer,
           ) {
             GLctx.framebufferRenderbuffer(
               target,
               attachment,
               renderbuffertarget,
-              GL.renderbuffers[renderbuffer]
+              GL.renderbuffers[renderbuffer],
             );
           }
 
@@ -10557,14 +10558,14 @@
             attachment,
             textarget,
             texture,
-            level
+            level,
           ) {
             GLctx.framebufferTexture2D(
               target,
               attachment,
               textarget,
               GL.textures[texture],
-              level
+              level,
             );
           }
 
@@ -10595,7 +10596,7 @@
               n,
               renderbuffers,
               "createRenderbuffer",
-              GL.renderbuffers
+              GL.renderbuffers,
             );
           }
 
@@ -10606,7 +10607,7 @@
           function _glGetAttribLocation(program, name) {
             return GLctx.getAttribLocation(
               GL.programs[program],
-              UTF8ToString(name)
+              UTF8ToString(name),
             );
           }
 
@@ -10729,7 +10730,7 @@
                           name_ +
                           ")! (error: " +
                           e +
-                          ")"
+                          ")",
                       );
                       return;
                     }
@@ -10748,7 +10749,7 @@
                       result +
                       " of type " +
                       typeof result +
-                      "!"
+                      "!",
                   );
                   return;
               }
@@ -10806,7 +10807,7 @@
                 ) {
                   program.maxUniformLength = Math.max(
                     program.maxUniformLength,
-                    GLctx.getActiveUniform(program, i).name.length + 1
+                    GLctx.getActiveUniform(program, i).name.length + 1,
                   );
                 }
               }
@@ -10820,7 +10821,7 @@
                 ) {
                   program.maxAttributeLength = Math.max(
                     program.maxAttributeLength,
-                    GLctx.getActiveAttrib(program, i).name.length + 1
+                    GLctx.getActiveAttrib(program, i).name.length + 1,
                   );
                 }
               }
@@ -10834,7 +10835,7 @@
                 ) {
                   program.maxUniformBlockNameLength = Math.max(
                     program.maxUniformBlockNameLength,
-                    GLctx.getActiveUniformBlockName(program, i).length + 1
+                    GLctx.getActiveUniformBlockName(program, i).length + 1,
                   );
                 }
               }
@@ -10871,7 +10872,7 @@
             } else {
               HEAP32[p >> 2] = GLctx.getShaderParameter(
                 GL.shaders[shader],
-                pname
+                pname,
               );
             }
           }
@@ -10949,7 +10950,7 @@
             width,
             height,
             sizePerPixel,
-            alignment
+            alignment,
           ) {
             function roundedToNextMultipleOf(x, y) {
               return (x + y - 1) & -y;
@@ -10957,7 +10958,7 @@
             var plainRowSize = width * sizePerPixel;
             var alignedRowSize = roundedToNextMultipleOf(
               plainRowSize,
-              alignment
+              alignment,
             );
             return height * alignedRowSize;
           }
@@ -11005,7 +11006,7 @@
             width,
             height,
             pixels,
-            internalFormat
+            internalFormat,
           ) {
             var heap = heapObjectForWebGLType(type);
             var shift = heapAccessShiftForWebGLHeap(heap);
@@ -11016,7 +11017,7 @@
               width,
               height,
               sizePerPixel,
-              GL.unpackAlignment
+              GL.unpackAlignment,
             );
             return heap.subarray(pixels >> shift, (pixels + bytes) >> shift);
           }
@@ -11035,7 +11036,7 @@
                   format,
                   type,
                   heap,
-                  pixels >> heapAccessShiftForWebGLHeap(heap)
+                  pixels >> heapAccessShiftForWebGLHeap(heap),
                 );
               }
               return;
@@ -11046,7 +11047,7 @@
               width,
               height,
               pixels,
-              format
+              format,
             );
             if (!pixelData) {
               GL.recordError(1280);
@@ -11073,7 +11074,7 @@
             border,
             format,
             type,
-            pixels
+            pixels,
           ) {
             if (GL.currentContext.version >= 2) {
               if (GLctx.currentPixelUnpackBufferBinding) {
@@ -11086,7 +11087,7 @@
                   border,
                   format,
                   type,
-                  pixels
+                  pixels,
                 );
               } else if (pixels) {
                 var heap = heapObjectForWebGLType(type);
@@ -11100,7 +11101,7 @@
                   format,
                   type,
                   heap,
-                  pixels >> heapAccessShiftForWebGLHeap(heap)
+                  pixels >> heapAccessShiftForWebGLHeap(heap),
                 );
               } else {
                 GLctx.texImage2D(
@@ -11112,7 +11113,7 @@
                   border,
                   format,
                   type,
-                  null
+                  null,
                 );
               }
               return;
@@ -11133,9 +11134,9 @@
                     width,
                     height,
                     pixels,
-                    internalFormat
+                    internalFormat,
                   )
-                : null
+                : null,
             );
           }
 
@@ -11156,7 +11157,7 @@
             height,
             format,
             type,
-            pixels
+            pixels,
           ) {
             if (GL.currentContext.version >= 2) {
               if (GLctx.currentPixelUnpackBufferBinding) {
@@ -11169,7 +11170,7 @@
                   height,
                   format,
                   type,
-                  pixels
+                  pixels,
                 );
               } else if (pixels) {
                 var heap = heapObjectForWebGLType(type);
@@ -11183,7 +11184,7 @@
                   format,
                   type,
                   heap,
-                  pixels >> heapAccessShiftForWebGLHeap(heap)
+                  pixels >> heapAccessShiftForWebGLHeap(heap),
                 );
               } else {
                 GLctx.texSubImage2D(
@@ -11195,7 +11196,7 @@
                   height,
                   format,
                   type,
-                  null
+                  null,
                 );
               }
               return;
@@ -11208,7 +11209,7 @@
                 width,
                 height,
                 pixels,
-                0
+                0,
               );
             GLctx.texSubImage2D(
               target,
@@ -11219,7 +11220,7 @@
               height,
               format,
               type,
-              pixelData
+              pixelData,
             );
           }
 
@@ -11232,7 +11233,7 @@
                   GLctx.getUniformLocation(
                     p,
                     p.uniformArrayNamesById[location] +
-                      (webglLoc > 0 ? "[" + webglLoc + "]" : "")
+                      (webglLoc > 0 ? "[" + webglLoc + "]" : ""),
                   );
               }
               return webglLoc;
@@ -11261,7 +11262,7 @@
                   webglGetUniformLocation(location),
                   HEAPF32,
                   value >> 2,
-                  count * 3
+                  count * 3,
                 );
               return;
             }
@@ -11275,7 +11276,7 @@
             } else {
               var view = HEAPF32.subarray(
                 value >> 2,
-                (value + count * 12) >> 2
+                (value + count * 12) >> 2,
               );
             }
             GLctx.uniform3fv(webglGetUniformLocation(location), view);
@@ -11289,7 +11290,7 @@
                   !!transpose,
                   HEAPF32,
                   value >> 2,
-                  count * 16
+                  count * 16,
                 );
               return;
             }
@@ -11319,13 +11320,13 @@
             } else {
               var view = HEAPF32.subarray(
                 value >> 2,
-                (value + count * 64) >> 2
+                (value + count * 64) >> 2,
               );
             }
             GLctx.uniformMatrix4fv(
               webglGetUniformLocation(location),
               !!transpose,
-              view
+              view,
             );
           }
 
@@ -11341,7 +11342,7 @@
             type,
             normalized,
             stride,
-            ptr
+            ptr,
           ) {
             GLctx.vertexAttribPointer(
               index,
@@ -11349,7 +11350,7 @@
               type,
               !!normalized,
               stride,
-              ptr
+              ptr,
             );
           }
 
@@ -11707,7 +11708,7 @@
                 key,
                 keyCode,
                 status,
-                GLFW.getModBits(GLFW.active)
+                GLFW.getModBits(GLFW.active),
               );
             },
             onGamepadConnected: function (event) {
@@ -11744,7 +11745,7 @@
               getWasmTableEntry(GLFW.active.cursorPosFunc)(
                 GLFW.active.id,
                 Browser.mouseX,
-                Browser.mouseY
+                Browser.mouseY,
               );
             },
             DOMToGLFWMouseButton: function (event) {
@@ -11794,7 +11795,7 @@
                 GLFW.active.id,
                 eventButton,
                 status,
-                GLFW.getModBits(GLFW.active)
+                GLFW.getModBits(GLFW.active),
               );
             },
             onMouseButtonDown: function (event) {
@@ -11811,8 +11812,8 @@
                 delta == 0
                   ? 0
                   : delta > 0
-                  ? Math.max(delta, 1)
-                  : Math.min(delta, -1);
+                    ? Math.max(delta, 1)
+                    : Math.min(delta, -1);
               GLFW.wheelPos += delta;
               if (
                 !GLFW.active ||
@@ -11866,7 +11867,7 @@
                 Browser.setCanvasSize(
                   GLFW.active.width,
                   GLFW.active.height,
-                  true
+                  true,
                 );
                 GLFW.onWindowSizeChanged();
                 GLFW.onFramebufferSizeChanged();
@@ -11879,7 +11880,7 @@
                 getWasmTableEntry(GLFW.active.windowSizeFunc)(
                   GLFW.active.id,
                   GLFW.active.width,
-                  GLFW.active.height
+                  GLFW.active.height,
                 );
               });
             },
@@ -11890,7 +11891,7 @@
                 getWasmTableEntry(GLFW.active.framebufferSizeFunc)(
                   GLFW.active.id,
                   GLFW.active.width,
-                  GLFW.active.height
+                  GLFW.active.height,
                 );
               });
             },
@@ -11921,8 +11922,8 @@
                 GLFW.lastGamepadState = navigator.getGamepads
                   ? navigator.getGamepads()
                   : navigator.webkitGetGamepads
-                  ? navigator.webkitGetGamepads
-                  : [];
+                    ? navigator.webkitGetGamepads
+                    : [];
                 GLFW.lastGamepadStateFrame =
                   Browser.mainLoop.currentFrameNumber;
                 for (var joy = 0; joy < GLFW.lastGamepadState.length; ++joy) {
@@ -12032,7 +12033,7 @@
                       "failed to read dropped file: " +
                         file.name +
                         ": " +
-                        reader.error
+                        reader.error,
                     );
                     return;
                   }
@@ -12042,7 +12043,7 @@
                     getWasmTableEntry(GLFW.active.dropFunc)(
                       GLFW.active.id,
                       count,
-                      filenames
+                      filenames,
                     );
                     for (var i = 0; i < filenamesArray.length; ++i) {
                       _free(filenamesArray[i]);
@@ -12103,14 +12104,14 @@
                       Module["canvas"].removeEventListener(
                         "click",
                         GLFW.onClickRequestPointerLock,
-                        true
+                        true,
                       );
                       Module["canvas"].exitPointerLock();
                       break;
                     }
                     case 212994: {
                       out(
-                        "glfwSetInputMode called with GLFW_CURSOR_HIDDEN value not implemented."
+                        "glfwSetInputMode called with GLFW_CURSOR_HIDDEN value not implemented.",
                       );
                       break;
                     }
@@ -12119,7 +12120,7 @@
                       Module["canvas"].addEventListener(
                         "click",
                         GLFW.onClickRequestPointerLock,
-                        true
+                        true,
                       );
                       Module["canvas"].requestPointerLock();
                       break;
@@ -12128,7 +12129,7 @@
                       out(
                         "glfwSetInputMode called with unknown value parameter value: " +
                           value +
-                          "."
+                          ".",
                       );
                       break;
                     }
@@ -12137,13 +12138,13 @@
                 }
                 case 208898: {
                   out(
-                    "glfwSetInputMode called with GLFW_STICKY_KEYS mode not implemented."
+                    "glfwSetInputMode called with GLFW_STICKY_KEYS mode not implemented.",
                   );
                   break;
                 }
                 case 208899: {
                   out(
-                    "glfwSetInputMode called with GLFW_STICKY_MOUSE_BUTTONS mode not implemented."
+                    "glfwSetInputMode called with GLFW_STICKY_MOUSE_BUTTONS mode not implemented.",
                   );
                   break;
                 }
@@ -12151,7 +12152,7 @@
                   out(
                     "glfwSetInputMode called with unknown mode parameter value: " +
                       mode +
-                      "."
+                      ".",
                   );
                   break;
                 }
@@ -12262,7 +12263,7 @@
                     Module["canvas"],
                     true,
                     true,
-                    contextAttributes
+                    contextAttributes,
                   );
                 } else {
                   Browser.init();
@@ -12275,7 +12276,7 @@
                 height,
                 title,
                 monitor,
-                share
+                share,
               );
               if (id - 1 == GLFW.windows.length) {
                 GLFW.windows.push(win);
@@ -12355,12 +12356,12 @@
             window.addEventListener(
               "gamepadconnected",
               GLFW.onGamepadConnected,
-              true
+              true,
             );
             window.addEventListener(
               "gamepaddisconnected",
               GLFW.onGamepadDisconnected,
-              true
+              true,
             );
             window.addEventListener("keydown", GLFW.onKeydown, true);
             window.addEventListener("keypress", GLFW.onKeyPress, true);
@@ -12369,59 +12370,59 @@
             Module["canvas"].addEventListener(
               "touchmove",
               GLFW.onMousemove,
-              true
+              true,
             );
             Module["canvas"].addEventListener(
               "touchstart",
               GLFW.onMouseButtonDown,
-              true
+              true,
             );
             Module["canvas"].addEventListener(
               "touchcancel",
               GLFW.onMouseButtonUp,
-              true
+              true,
             );
             Module["canvas"].addEventListener(
               "touchend",
               GLFW.onMouseButtonUp,
-              true
+              true,
             );
             Module["canvas"].addEventListener(
               "mousemove",
               GLFW.onMousemove,
-              true
+              true,
             );
             Module["canvas"].addEventListener(
               "mousedown",
               GLFW.onMouseButtonDown,
-              true
+              true,
             );
             Module["canvas"].addEventListener(
               "mouseup",
               GLFW.onMouseButtonUp,
-              true
+              true,
             );
             Module["canvas"].addEventListener("wheel", GLFW.onMouseWheel, true);
             Module["canvas"].addEventListener(
               "mousewheel",
               GLFW.onMouseWheel,
-              true
+              true,
             );
             Module["canvas"].addEventListener(
               "mouseenter",
               GLFW.onMouseenter,
-              true
+              true,
             );
             Module["canvas"].addEventListener(
               "mouseleave",
               GLFW.onMouseleave,
-              true
+              true,
             );
             Module["canvas"].addEventListener("drop", GLFW.onDrop, true);
             Module["canvas"].addEventListener(
               "dragover",
               GLFW.onDragover,
-              true
+              true,
             );
             Browser.resizeListeners.push(function (width, height) {
               GLFW.onCanvasResize(width, height);
@@ -12471,12 +12472,12 @@
             window.removeEventListener(
               "gamepadconnected",
               GLFW.onGamepadConnected,
-              true
+              true,
             );
             window.removeEventListener(
               "gamepaddisconnected",
               GLFW.onGamepadDisconnected,
-              true
+              true,
             );
             window.removeEventListener("keydown", GLFW.onKeydown, true);
             window.removeEventListener("keypress", GLFW.onKeyPress, true);
@@ -12485,63 +12486,63 @@
             Module["canvas"].removeEventListener(
               "touchmove",
               GLFW.onMousemove,
-              true
+              true,
             );
             Module["canvas"].removeEventListener(
               "touchstart",
               GLFW.onMouseButtonDown,
-              true
+              true,
             );
             Module["canvas"].removeEventListener(
               "touchcancel",
               GLFW.onMouseButtonUp,
-              true
+              true,
             );
             Module["canvas"].removeEventListener(
               "touchend",
               GLFW.onMouseButtonUp,
-              true
+              true,
             );
             Module["canvas"].removeEventListener(
               "mousemove",
               GLFW.onMousemove,
-              true
+              true,
             );
             Module["canvas"].removeEventListener(
               "mousedown",
               GLFW.onMouseButtonDown,
-              true
+              true,
             );
             Module["canvas"].removeEventListener(
               "mouseup",
               GLFW.onMouseButtonUp,
-              true
+              true,
             );
             Module["canvas"].removeEventListener(
               "wheel",
               GLFW.onMouseWheel,
-              true
+              true,
             );
             Module["canvas"].removeEventListener(
               "mousewheel",
               GLFW.onMouseWheel,
-              true
+              true,
             );
             Module["canvas"].removeEventListener(
               "mouseenter",
               GLFW.onMouseenter,
-              true
+              true,
             );
             Module["canvas"].removeEventListener(
               "mouseleave",
               GLFW.onMouseleave,
-              true
+              true,
             );
             Module["canvas"].removeEventListener("drop", GLFW.onDrop, true);
             Module["canvas"].removeEventListener(
               "dragover",
               GLFW.onDragover,
-              true
+              true,
             );
             Module["canvas"].width = Module["canvas"].height = 1;
             GLFW.windows = null;
@@ -12605,7 +12606,7 @@
           Module["FS_createDevice"] = FS.createDevice;
           Module["requestFullscreen"] = function Module_requestFullscreen(
             lockPointer,
-            resizeCanvas
+            resizeCanvas,
           ) {
             Browser.requestFullscreen(lockPointer, resizeCanvas);
           };
@@ -12616,7 +12617,7 @@
           Module["setCanvasSize"] = function Module_setCanvasSize(
             width,
             height,
-            noUpdates
+            noUpdates,
           ) {
             Browser.setCanvasSize(width, height, noUpdates);
           };
@@ -12633,13 +12634,13 @@
             canvas,
             useWebGL,
             setInModule,
-            webGLContextAttributes
+            webGLContextAttributes,
           ) {
             return Browser.createContext(
               canvas,
               useWebGL,
               setInModule,
-              webGLContextAttributes
+              webGLContextAttributes,
             );
           };
           var preloadedImages = {};
@@ -12658,7 +12659,7 @@
               stringy,
               u8array,
               0,
-              u8array.length
+              u8array.length,
             );
             if (dontAddNull) u8array.length = numBytesWritten;
             return u8array;
@@ -12836,7 +12837,7 @@
           var _free = (Module["_free"] = function () {
             return (_free = Module["_free"] = Module["asm"]["tb"]).apply(
               null,
-              arguments
+              arguments,
             );
           });
           var _hint_file_exists = (Module["_hint_file_exists"] = function () {
@@ -12846,7 +12847,7 @@
           var _malloc = (Module["_malloc"] = function () {
             return (_malloc = Module["_malloc"] = Module["asm"]["vb"]).apply(
               null,
-              arguments
+              arguments,
             );
           });
           var _menu_query_games_add_result = (Module[
@@ -12906,7 +12907,7 @@
           var _memcpy = (Module["_memcpy"] = function () {
             return (_memcpy = Module["_memcpy"] = Module["asm"]["Db"]).apply(
               null,
-              arguments
+              arguments,
             );
           });
           var _state_menu_deeplink_stop = (Module["_state_menu_deeplink_stop"] =
@@ -13169,7 +13170,7 @@
           var _main = (Module["_main"] = function () {
             return (_main = Module["_main"] = Module["asm"]["wc"]).apply(
               null,
-              arguments
+              arguments,
             );
           });
           var _ntp_set_server_time = (Module["_ntp_set_server_time"] =
