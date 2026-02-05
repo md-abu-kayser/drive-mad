@@ -168,17 +168,17 @@ Medium‑term enhancements:
 
 Maintain a `CHANGELOG.md` for release notes if you publish versions.
 
-## License
+### License
 
 This project is distributed under the MIT License. See `LICENSE` in the repository root.
 
-## Contact & Commercial Licensing
+### Contact & Commercial Licensing
 
 For client work, custom feature development, or commercial licensing inquiries, include your contact block here (email / company / website). If you'd like, I can add a professional `Contact` or `SPONSOR.md` template.
 
 --
 
-## Next Steps I can help with
+### Next Steps I can help with
 
 - Add demo assets (`assets/readme-banner.png`, `assets/demo.gif`) and update the README preview
 - Initialize a minimal `package.json` and add `vite` build scripts, then build a `dist/` and update deployment instructions
