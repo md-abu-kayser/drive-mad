@@ -1,6 +1,18 @@
 # DriveMad - High‑Octane Arcade Racing
 
-![status: draft](https://img.shields.io/badge/status-draft-orange) ![license: MIT](https://img.shields.io/badge/license-MIT-blue)
+<!-- MIT License -->
+
+[![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](./LICENSE)
+
+<!-- HTML & CSS -->
+
+[![HTML5](https://img.shields.io/badge/HTML5-E34F26?logo=html5&logoColor=white)](https://developer.mozilla.org/en-US/docs/Web/HTML)
+[![CSS3](https://img.shields.io/badge/CSS3-1572B6?logo=css3&logoColor=white)](https://developer.mozilla.org/en-US/docs/Web/CSS)
+
+<!-- Languages & Web Standards -->
+
+[![JavaScript](https://img.shields.io/badge/JavaScript-F7DF1E?logo=javascript&logoColor=black)](https://developer.mozilla.org/en-US/docs/Web/JavaScript)
+[![ECMAScript Spec](https://img.shields.io/badge/ECMAScript-262-7A0BC0?logo=ecmascript&logoColor=white)](https://www.ecma-international.org/publications-and-standards/standards/ecma-262/)
 
 DriveMad is a lightweight, arcade‑style HTML5 racing game optimized for short, high‑energy browser play sessions. It is implemented as a static single‑page web app (Canvas/WebGL) with responsive controls and multi‑input support (keyboard, gamepad, touch).
 
