@@ -18,6 +18,8 @@
 
 - HTML (MDN) docs: https://developer.mozilla.org/en-US/docs/Web/HTML
 - CSS (MDN) docs: https://developer.mozilla.org/en-US/docs/Web/CSS
+- JavaScript (MDN) docs: https://developer.mozilla.org/en-US/docs/Web/JavaScript
+- ECMAScript (spec, ECMA-262) docs: https://www.ecma-international.org/publications-and-standards/standards/ecma-262/
 
 ---
 
