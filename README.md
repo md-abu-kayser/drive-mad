@@ -3,7 +3,10 @@
 <!-- MIT License -->
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](./LICENSE)
-[![Demo](https://img.shields.io/badge/demo-GitHub%20Pages-brightgreen)](https://md-abu-kayser.github.io/drive-mad/)
+
+<!-- Demo Live Link -->
+
+[![Demo](https://img.shields.io/badge/Netlify-Live%20Links-brightgreen)](https://drive-mad-car-game-71486c.netlify.app/)
 
 <!-- HTML & CSS -->
 
